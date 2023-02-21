@@ -1,0 +1,20 @@
+{
+  "manifestHello": {
+    "message": "你好，这是【Chromium Extensions Template】！"
+  },
+  "popupHello": {
+    "message": "你好，这是【Popup】！"
+  },
+  "optionsHello": {
+    "message": "你好，这是【Options】！"
+  },
+  "backgroundHello": {
+    "message": "你好，这是【Background】！"
+  },
+  "contentScriptsHello": {
+    "message": "你好，这是【Content Scripts】！"
+  },
+  "injectedScriptsHello": {
+    "message": "你好，这是【Injected Scripts】！"
+  }
+}

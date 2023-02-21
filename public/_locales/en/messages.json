@@ -1,0 +1,20 @@
+{
+  "manifestHello": {
+    "message": "Hello, this is [Chromium Extensions Template]!"
+  },
+  "popupHello": {
+    "message": "Hello, this is [Popup]!"
+  },
+  "optionsHello": {
+    "message": "Hello, this is [Options]!"
+  },
+  "backgroundHello": {
+    "message": "Hello, this is [Background]!"
+  },
+  "contentScriptsHello": {
+    "message": "Hello, this is [Content Scripts]!"
+  },
+  "injectedScriptsHello": {
+    "message": "Hello, this is [Injected Scripts]!"
+  }
+}
