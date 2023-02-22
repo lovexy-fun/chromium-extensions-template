@@ -6,7 +6,7 @@
   "homepage_url": "https://github.com/lovexy-fun/chromium-extensions-template#readme",
   "default_locale": "en",
   "action": {
-    "default_popup": "popup.html",
+    "default_popup": "html/popup.html",
     "default_icon": {
       "16": "images/icons/icon-16.png",
       "24": "images/icons/icon-24.png",
@@ -18,10 +18,10 @@
     }
   },
   "background": {
-    "service_worker": "background.js"
+    "service_worker": "js/background.js"
   },
   "options_ui": {
-    "page": "options.html",
+    "page": "html/options.html",
     "open_in_tab": true
   },
   "content_scripts": [
@@ -30,7 +30,7 @@
         "<all_urls>"
       ],
       "js": [
-        "content_scripts.js"
+        "js/content_scripts.js"
       ]
     }
   ],
@@ -46,7 +46,7 @@
   "web_accessible_resources": [
     {
       "resources": [
-        "injected_scripts.js"
+        "js/injected_scripts.js"
       ],
       "matches": [
         "<all_urls>"

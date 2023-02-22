@@ -3,6 +3,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const {CleanWebpackPlugin} = require("clean-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const TerserWebpackPlugin = require("terser-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
     mode: "production",
@@ -15,7 +16,7 @@ module.exports = {
     },
     output: {
         path: path.join(__dirname, "../dist"),
-        filename: "[name].js"
+        filename: "js/[name].js"
     },
     plugins: [
         new CleanWebpackPlugin({
@@ -23,13 +24,16 @@ module.exports = {
         }),
         new HtmlWebpackPlugin({
             template: path.join(__dirname, "../public/popup.html"),
-            filename: "popup.html",
+            filename: "html/popup.html",
             chunks: ["popup", "commons"]
         }),
         new HtmlWebpackPlugin({
             template: path.join(__dirname, "../public/options.html"),
-            filename: "options.html",
+            filename: "html/options.html",
             chunks: ["options", "commons"]
+        }),
+        new MiniCssExtractPlugin({
+            filename: "css/[name].css"
         }),
         new CopyWebpackPlugin({
             patterns: [
@@ -75,6 +79,19 @@ module.exports = {
                 test: /\.(js|jsx)$/,
                 exclude: /node_modules/,
                 loader: "babel-loader"
+            },
+            {
+                test: /\.(css|scss)$/,
+                use: [
+                    MiniCssExtractPlugin.loader,
+                    {
+                        loader: "css-loader",
+                        options: {
+                            modules: true
+                        }
+                    },
+                    "sass-loader"
+                ]
             }
         ]
     }
