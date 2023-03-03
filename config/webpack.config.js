@@ -7,6 +7,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
     mode: "production",
+    //定义入口
     entry: {
         popup: path.join(__dirname, "../src/popup/index.js"),
         background: path.join(__dirname, "../src/background/index.js"),
@@ -14,27 +15,33 @@ module.exports = {
         content_scripts: path.join(__dirname, "../src/content_scripts/index.js"),
         injected_scripts: path.join(__dirname, "../src/injected_scripts/index.js"),
     },
+    //定义输出
     output: {
         path: path.join(__dirname, "../dist"),
         filename: "js/[name].js"
     },
     plugins: [
+        //清理插件配置
         new CleanWebpackPlugin({
             path: path.join(__dirname, "../dist")
         }),
+        //popup页面输出配置
         new HtmlWebpackPlugin({
             template: path.join(__dirname, "../public/popup.html"),
             filename: "html/popup.html",
             chunks: ["popup", "commons"]
         }),
+        //options页面输出配置
         new HtmlWebpackPlugin({
             template: path.join(__dirname, "../public/options.html"),
             filename: "html/options.html",
             chunks: ["options", "commons"]
         }),
+        //抽取css作为单独的文件
         new MiniCssExtractPlugin({
             filename: "css/[name].css"
         }),
+        //拷贝静态资源
         new CopyWebpackPlugin({
             patterns: [
                 {
@@ -52,6 +59,7 @@ module.exports = {
             ]
         })
     ],
+    //抽取公共的js引用
     optimization: {
         splitChunks: {
             cacheGroups: {
@@ -73,6 +81,7 @@ module.exports = {
             "public": path.resolve(__dirname, "../public"),
         }
     },
+    //babel和sass配置
     module: {
         rules: [
             {
